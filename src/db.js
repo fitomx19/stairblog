@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
-const db = process.env.MONGODB_URL;
-mongoose.connect( db, {
+
+//variables de entorno
+require('dotenv').config({path: 'variables.env'});
+console.log(process.env.DB_URL);
+console.log(process.env.DB_URL_ATLAS);
+
+mongoose.connect(process.env.DB_URL_ATLAS, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,

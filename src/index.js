@@ -11,8 +11,9 @@ const app = express();
 /* require('./config/passport'); */ 
 //CONFIGURACIONES
 
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT  || 3000;
 
-app.set('port', process.env.PORT || 3000);
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -59,8 +60,8 @@ app.use(require('./routes/post'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 // Sere esta escuchando
-app.listen(app.get('port'), () => {
-    console.log('Servidor en puerto', app.get('port'));
+app.listen(port,host, () => {
+    console.log('Servidor en puerto', port);
 });
 
 /* 
