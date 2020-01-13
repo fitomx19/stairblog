@@ -39,19 +39,19 @@ app.use(session({
 }));
 
 /* app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash()); */
+app.use(passport.session());*/
+app.use(flash()); 
 
 //Variables Globales
 
-/* app.use((req, res, next) => {
+ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
-    res.locals.user = req.user || null;
+    /* res.locals.user = req.user || null; */
     //asi lo pide passport
     next();
-}); */
+}); 
 
 //Rutas
 app.use(require('./routes/index'));

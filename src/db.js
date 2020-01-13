@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 //variables de entorno
 require('dotenv').config({path: 'variables.env'});
-console.log(process.env.DB_URL);
-console.log(process.env.DB_URL_ATLAS);
+
 
 mongoose.connect(process.env.DB_URL_ATLAS, {
     useCreateIndex: true,
@@ -11,5 +10,5 @@ mongoose.connect(process.env.DB_URL_ATLAS, {
     useFindAndModify: false,
     useUnifiedTopology: true
 })
-    .then(db => console.log('DB funcionando'))
+    .then(db => console.log('DB funcionando en la nube '))
     .catch(err => console.log(err));

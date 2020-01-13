@@ -38,7 +38,7 @@ router.post('/post/new-post', async (req, res) => {
        // newNote.user = req.user.id; //el usuario
         await newPost.save();
         console.log(newPost);
-        
+        req.flash('success_msg', 'Post agregado correctamente');
         res.redirect('/posts');
         //node es asyncrono , save guarda
     }
