@@ -1,4 +1,6 @@
 
+
+
 <div class="container">
 
     <div class="row">
@@ -9,25 +11,25 @@
             <h1 class="my-4">Todos los Post</h1>
             <small>Editados por <a href="/about">Michael Adolfo Huerta Ramirez</a></small>
 
-         
+
 
             <!-- Blog Post -->
-            {{#each entradas}}
-            <div class="card mb-4">
-                <img class="card-img-top" src=" {{image}} " alt="">
-                <div class="card-body">
-                    <h2 class="card-title">{{ title }}</h2>
-                    <p class="card-text">{{ description }}</p>
-                        
-                    <a href="/posts/{{_id}} " class="btn btn-primary">Read More &rarr;</a>
-                </div>
-                <div class="card-footer text-muted">
-                    Created on {{date}}
-                </div>
+        {{#each search}}
+        <div class="card mb-4">
+            <img class="card-img-top" src=" {{image}} " alt="">
+            <div class="card-body">
+                <h2 class="card-title">{{ title }}</h2>
+                <p class="card-text">{{ description }}</p>
+        
+                <a href="/posts/{{_id}} " class="btn btn-primary">Read More &rarr;</a>
             </div>
-            {{/each}}
+            <div class="card-footer text-muted">
+                Created on {{date}}
+            </div>
+        </div>
+        {{/each}}
 
-           
+
             <!-- Pagination -->
             <ul class="pagination justify-content-center mb-4">
                 <li class="page-item">
@@ -47,27 +49,26 @@
             <div class="card my-4">
                 <h5 class="card-header">Buscar</h5>
                 <div class="card-body">
-                    <form name="searchin" method="POST" action="/posts/search">
+                    <form name="searchin" method="GET" action="/posts/search">
                         <div class="input-group">
-                            <input type="text" name="word" id="word" class="form-control" placeholder="Buscando...">
+                            <input type="text" name="search-word" class="form-control" placeholder="Buscando...">
                             <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit">Vamos!</button>
                             </span>
                         </div>
                     </form>
-                   
+
                 </div>
-               
             </div>
 
-           
+
 
             <!-- Side Widget -->
             <div class="card my-4">
                 <h5 class="card-header"> Spotify Widget</h5>
                 <div class="card-body">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Nisi consectetur iusto quidem laudantium, eaque eius voluptas tempore vitae. 
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Nisi consectetur iusto quidem laudantium, eaque eius voluptas tempore vitae.
                     Hic nobis modi eos odio impedit consequuntur enim aspernatur ut iste deleniti?
                 </div>
             </div>

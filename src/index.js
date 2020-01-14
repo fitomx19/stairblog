@@ -67,4 +67,9 @@ app.listen(port,host, () => {
 /* 
  npm i -D handlebars@4.5.0 SOLCUCION PARA EL CHILD HANDLEBARS */
 
- 
+/* heroku login
+$ heroku git: clone - a blogwave
+$ cd blogwave
+$ git add.
+$ git commit - am ""
+$ git push heroku maste */

@@ -47,7 +47,24 @@ router.post('/post/new-post', async (req, res) => {
 
 router.get('/posts/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
+    console.log(post);
     res.render('posts/read', { post });
 });
 
+router.post('/posts/search', async (req, res) => {
+    const {word}  = req.body;
+    
+    const entradas = await Post.find({
+        $or: [
+            { title: word },
+            { content: { $regex: word } },
+            { description: word }
+              
+            
+        ]
+    });
+
+    
+    res.render('posts/all-posts', { entradas });
+});
 module.exports = router;
