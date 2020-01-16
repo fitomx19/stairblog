@@ -5,6 +5,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+var FacebookStrategy = require('passport-facebook');
+var bodyParser = require('body-parser');
 //Inicializaodres
 const app = express();
  require('./db');
@@ -14,7 +16,7 @@ const app = express();
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT  || 3000;
 
-
+app.use(bodyParser.json());
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
@@ -31,9 +33,13 @@ app.set('view engine', 'hbs');
 app.set('view engine', '.hbs');
 //Middlewares funciones antes de que lleguen alas rutas o servidor
 app.use(express.urlencoded({ extended: false }));//solo quiero sus datos
+
+
 app.use(methodOverride('_method')); //para usar put && delete
+
+//pasports
 app.use(session({
-    secret: 'adolfo',
+    secret: 'shisho666',
     resave: true,
     saveUninitialized: true
 }));
@@ -53,6 +59,35 @@ app.use(flash());
     next();
 }); 
 
+
+//Strategy fACEBOOk
+var FACEBOOK_APP_ID = '444404096447406',
+    FACEBOOK_APP_SECRET = '7425be9ae9b6dc8e4004a3920a7e7502';
+
+var fbOpts = {
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    profileFields: ['emails']
+};
+
+var fbCallback = function(accesToken, refreshToken,profile, cb){
+    console.log(accesToken, refreshToken, profile);
+};
+
+passport.use(new FacebookStrategy(fbOpts,fbCallback));
+
+app.route('/login')
+    .get(passport.authenticate('facebook', { scope: ['email'] }));
+
+
+app.route('/auth/facebook/callback')
+    .get(passport.authenticate('facebook', function (err, user, info, req, res) {
+        res.send('/posts/add')
+
+    }))
+
+
 //Rutas
 app.use(require('./routes/index'));
 app.use(require('./routes/post'));
@@ -70,6 +105,6 @@ app.listen(port,host, () => {
 /* heroku login
 $ heroku git: clone - a blogwave
 $ cd blogwave
-$ git add.
-$ git commit - am ""
+$ git add .
+$ git commit -am "please workds"
 $ git push heroku maste */
