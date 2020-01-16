@@ -67,7 +67,7 @@ var FACEBOOK_APP_ID = '444404096447406',
 var fbOpts = {
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    callbackURL: '/auth/facebook/callback',
     profileFields: ['emails']
 };
 
@@ -107,4 +107,4 @@ $ heroku git: clone - a blogwave
 $ cd blogwave
 $ git add .
 $ git commit -am "please workds"
-$ git push heroku maste */
+$ git push heroku master */
