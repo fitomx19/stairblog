@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 //Inicializaodres
 const app = express();
  require('./db');
-/* require('./config/passport'); */ 
+ require('./config/passport');  
 //CONFIGURACIONES
 
 const host = process.env.HOST || '0.0.0.0';
@@ -44,8 +44,8 @@ app.use(session({
     saveUninitialized: true
 }));
 
-/* app.use(passport.initialize());
-app.use(passport.session());*/
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash()); 
 
 //Variables Globales
@@ -54,14 +54,14 @@ app.use(flash());
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
-    /* res.locals.user = req.user || null; */
+    res.locals.user = req.user || null; 
     //asi lo pide passport
     next();
 }); 
 
 
 //Strategy fACEBOOk
-var FACEBOOK_APP_ID = '444404096447406',
+/* var FACEBOOK_APP_ID = '444404096447406',
     FACEBOOK_APP_SECRET = '7425be9ae9b6dc8e4004a3920a7e7502';
 
 var fbOpts = {
@@ -85,12 +85,13 @@ app.route('/auth/facebook/callback')
     .get(passport.authenticate('facebook', function (err, user, info, req, res) {
         res.send('/posts/add')
 
-    }))
+    })) */
 
 
 //Rutas
 app.use(require('./routes/index'));
 app.use(require('./routes/post'));
+app.use(require('./routes/users'));
 //Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));

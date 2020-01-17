@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h1>Registro!</h1>
+            </div>
+            <div class="card-body">
+                <form action="/users/signup" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Introduce tu nombre de usuario"
+                            value="{{name}}" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Introduce tu correo" value="{{email}}"
+                            name="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Introduce tu contraseña"
+                            value="{{password}}" name="password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Repite tu contraseña"
+                            value="{{confirm_password}}" name="confirm_password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Codigo Invitacion" 
+                            name="confirmacion">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-success">Registrarse!</button>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>

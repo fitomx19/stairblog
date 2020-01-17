@@ -4,9 +4,10 @@ const router = express.Router();
 
 const Post = require('../models/Posts');
 
+const { isAuthenticated } = require('../handlers/auth');
+//que en realdiad son helpers :v
 
-
-router.get('/posts/add',  (req, res) => {
+router.get('/posts/add', isAuthenticated, (req, res) => {
     res.render('posts/new-post');
 });
 
