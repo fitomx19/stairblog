@@ -7,6 +7,7 @@ const PostSchema = new Schema({
     content: { type: String, required: true},
     image: { type: String, default: "http://placehold.it/750x300"},
     date: { type: Date, default: Date.now },
+    comentarios : {type: String},
     user: { type: String }
 
 });

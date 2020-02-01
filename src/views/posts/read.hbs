@@ -45,57 +45,55 @@
             <div class="card my-4">
                 <h5 class="card-header">Deja un comentario</h5>
                 <div class="card-body">
-                    <form>
+                    <form action="/comment/new-comment" method="POST">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <input type="hidden" value="{{post._id}}" name="id" class="form-control">
+                            <input type="text" placeholder="Escribe tu nombre!" name="name" class="form-control">
+                            <input type="text"  placeholder="Titulo del comentario" class="form-control" name="description">
+                            <textarea class="form-control" name="commentary" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar!</button>
+                        <input type="submit" class="btn btn-primary form-control">
                     </form>
                 </div>
             </div>
 
             <!-- Single Comment -->
+            {{#each commit}}
             <div class="media mb-4">
                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
-                    purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                    vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    <h5 class="mt-0"> {{name}} </h5>
+                    <h6>{{description}}</h6>
+                    <p> {{commentary}} </p>
+
+                   {{!--  <form action="/comment/new-answer" method="POST">
+                        <input type="hidden" value="{{_id}}" name="id_comentario" class="form-control">
+                        <input type="text" placeholder="Escribe tu nombre!" name="name" class="form-control">
+                        <textarea class="form-control" name="commentary" rows="1"></textarea> --}}
+                  {{!--   <input  type="submit" class="btn btn-primary" value="Responder a {{name}}"> --}}
+                       
+                    
+                    </form>
+                   
+
+                   
                 </div>
             </div>
-
-            <!-- Comment with nested comments -->
-            <div class="media mb-4">
+          {{!--   {{#each rest}}
+            <div class="media mt-4">
                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
-                    purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                    vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc
-                            ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc
-                            ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-
+                    <h5 class="mt-0">{{name}}</h5>
+            
                 </div>
             </div>
+            {{/each }} --}}
+        
+
+            {{/each}}
+         
+
+        
 
         </div>
 
@@ -133,3 +131,5 @@
 
 </div>
 <!-- /.container -->
+
+

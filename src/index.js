@@ -92,6 +92,7 @@ app.route('/auth/facebook/callback')
 app.use(require('./routes/index'));
 app.use(require('./routes/post'));
 app.use(require('./routes/users'));
+app.use(require('./routes/comments'));
 //Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));

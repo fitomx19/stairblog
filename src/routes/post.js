@@ -3,6 +3,8 @@ const router = express.Router();
 //obejto para crear rutas
 
 const Post = require('../models/Posts');
+const Comentarios = require('../models/Comments');
+const Answers = require('../models/Answers');
 
 const { isAuthenticated } = require('../handlers/auth');
 //que en realdiad son helpers :v
@@ -14,6 +16,7 @@ router.get('/posts/add', isAuthenticated, (req, res) => {
 
 router.get('/posts', async (req, res, next) => {
     const entradas = await Post.find().sort({ date: 'desc' });
+            
     res.render('posts/all-posts', { entradas });
 });
 
@@ -48,8 +51,14 @@ router.post('/post/new-post', async (req, res) => {
 
 router.get('/posts/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
+    const commit = await Comentarios.find({ id: req.params.id }); 
+    const rest = await Answers.find({ id_comentario: "5e2cfdcd8fffef156ced5c9d" }); 
     console.log(post);
-    res.render('posts/read', { post });
+    console.log('esto es el commit');
+    console.log(commit);
+    console.log('esto es el rest');
+    console.log(rest);
+    res.render('posts/read', { post, commit, rest });
 });
 
 router.post('/posts/search', async (req, res) => {
