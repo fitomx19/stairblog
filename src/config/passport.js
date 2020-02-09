@@ -33,7 +33,11 @@ passport.deserializeUser((id, done) => {
     //toma el id de la sesion 
     //asi esta en la documentacion de passport con asyncono peta la fregadera
 
-    User.findById(id, (err, user) => {
-        done(err, user);
+    User.findById(id, (err, user, nivel) => {
+        if (user.nivel == "1"){
+            done(err, user,nivel);
+        } else{
+            done(err, user);
+        }
     });
 });
