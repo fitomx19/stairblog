@@ -52,7 +52,21 @@ router.post('/post/new-post', async (req, res) => {
 router.get('/posts/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
     const commit = await Comentarios.find({ id: req.params.id }); 
+  
+    
+
     const rest = await Answers.find({ id_comentario: "5e2cfdcd8fffef156ced5c9d" }); 
+  
+    var comentario = ['1','2','22'];
+
+ 
+    comentario.forEach(function (valor, indice, array) {
+        console.log("En el índice " + indice + " hay este valor: " + valor);
+    });
+
+
+
+
     console.log(post);
     console.log('esto es el commit');
     console.log(commit);
