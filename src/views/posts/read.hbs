@@ -1,4 +1,7 @@
 <!-- Page Content -->
+
+
+
 <div class="container">
 
     <div class="row">
@@ -40,8 +43,19 @@
 
 
             <hr>
+            <div id="disqus_thread"></div>
+            <script>
 
-            <!-- Comments Form -->
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://blogwave-1.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                    Disqus.</a></noscript>
+           {{!--  <!-- Comments Form -->
             <div class="card my-4">
                 <h5 class="card-header">Deja un comentario</h5>
                 <div class="card-body">
@@ -55,10 +69,10 @@
                         <input type="submit" class="btn btn-primary form-control">
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Single Comment -->
-            {{#each commit}}
+           {{!--  {{#each commits}}
             <div class="media mb-4">
                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body">
@@ -66,11 +80,11 @@
                     <h6>{{description}}</h6>
                     <p> {{commentary}} </p>
 
-                   {{!--  <form action="/comment/new-answer" method="POST">
+                    <form action="/comment/new-answer" method="POST">
                         <input type="hidden" value="{{_id}}" name="id_comentario" class="form-control">
                         <input type="text" placeholder="Escribe tu nombre!" name="name" class="form-control">
-                        <textarea class="form-control" name="commentary" rows="1"></textarea> --}}
-                  {{!--   <input  type="submit" class="btn btn-primary" value="Responder a {{name}}"> --}}
+                        <textarea class="form-control" name="commentary" rows="1"></textarea> 
+                     <input  type="submit" class="btn btn-primary" value="Responder a {{name}}">
                        
                     
                     </form>
@@ -78,24 +92,41 @@
 
                    
                 </div>
-            </div>
-          {{!--   {{#each rest}}
-            <div class="media mt-4">
+            </div> --}}
+        
+
+           {{!--  {{/each}} --}}
+            
+          {{!--   <!-- Comment with nested comments -->
+            <div class="media mb-4">
                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body">
-                    <h5 class="mt-0">{{name}}</h5>
+                    <h5 class="mt-0">Commenter Name</h5>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+                    vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
+                    lacinia congue felis in faucibus.
+            
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                            odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                            fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+            
+                 
             
                 </div>
             </div>
-            {{/each }} --}}
-        
-
-            {{/each}}
+            
+            </div>
          
 
         
 
-        </div>
+        </div> --}}
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">

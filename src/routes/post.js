@@ -51,29 +51,84 @@ router.post('/post/new-post', async (req, res) => {
 
 router.get('/posts/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
-    const commit = await Comentarios.find({ id: req.params.id }); 
+    const commits = await Comentarios.find({ id: req.params.id }); 
+    
+    const reply = await Comentarios.find({ reply: { $nin: [0] } })
+        .where('id').equals(req.params.id);
+    //Primer query de union tipo Joina
+    /* const absolute = await Comentarios.aggregate([
+        {
+            $lookup:
+            {
+                from: 'Comentarios',
+                localField: 'id_comentario',
+                foreignField: 'id',
+                as: 'Resultados'
+            }
+        }
+    ]); */
+
+    //iNTENTO NACIONAL DE PROGRSAR PARTE 1
+    
+   
+    //console.log(reply); 
+   var matriz = [];
+   var arreglo = [];
+    //AHORA TENEMOS QUE ALMACENAS ESTA MADRE E.E
+   for (var i = 0; i < reply.length; i++) {
   
+      arreglo = reply[i]["_id"]; 
+      matriz = reply[i]["reply"];
+       /* const consulta_arreglo = await Comentarios.find()
+           .where('id').equals(arreglo);
+       for (let j = 0; j < consulta_arreglo.length; j++) {
+           
+           matriz.push(consulta_arreglo[j]);
+           
+       }
+       var seleccion = matriz.name;
+
+             */
+       console.log(matriz);
+   }
+    
+    
     
 
-    const rest = await Answers.find({ id_comentario: "5e2cfdcd8fffef156ced5c9d" }); 
+
   
-    var comentario = ['1','2','22'];
 
+    //primero necesitamos recuperar bien las consultas y luego 
+    //las impimire en arrayas posterior a esto los imprimire de forma adecuada uwu
+    //console.log('This is a thest' + reply);
+   
+
+
+
+   /*  var arr = [];
+    var Comentario = [];
+    var Respuesta = [];
+    for (var i = 0; i < Comentario.length; i++) {
+        arr.push({
+            comment: commits[i],
+            answer: reply[i]
+        });
+    }
+ */
+   // console.log("isi", arr)
+  
+   
  
-    comentario.forEach(function (valor, indice, array) {
-        console.log("En el índice " + indice + " hay este valor: " + valor);
-    });
+    //console.log(post);
+    //console.log('esto es el commit');
+         // console.log(commits);
+    //console.log('esto es el rest');
+    //console.log(rest);
+    res.render('posts/read', { post, commits});
+  
 
-
-
-
-    console.log(post);
-    console.log('esto es el commit');
-    console.log(commit);
-    console.log('esto es el rest');
-    console.log(rest);
-    res.render('posts/read', { post, commit, rest });
 });
+
 
 router.post('/posts/search', async (req, res) => {
     const {word}  = req.body;

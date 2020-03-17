@@ -46,7 +46,7 @@ router.post('/comment/new-comment', isAuthenticated, async (req, res) => {
 
 
 
-router.post('/comment/new-answer', async (req, res) => {
+router.post('/comment/new-answer', isAuthenticated, async (req, res) => {
     const { name, commentary, id_comentario } = req.body;
    
     const errors = [];
