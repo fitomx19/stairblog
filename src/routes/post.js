@@ -1,10 +1,12 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
+const { Schema } = mongoose;
+var mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
 //obejto para crear rutas
 
-const Post = require('../models/Posts');
-const Comentarios = require('../models/Comments');
-const Answers = require('../models/Answers');
+ const Post = require('../models/Posts'); 
+
 
 const { isAuthenticated } = require('../handlers/auth');
 //que en realdiad son helpers :v
@@ -12,6 +14,24 @@ const { isAuthenticated } = require('../handlers/auth');
 router.get('/posts/add', isAuthenticated, (req, res) => {
     res.render('posts/new-post');
 });
+
+router.post("/posts/busqueda", (req, res, next) => {
+
+    const { title } = req.body;
+    console.log(title);
+    Post.fuzzySearch(title, function (err, entradas) {
+        console.error(err);
+        console.log(entradas);
+       
+        res.render('posts/view', { entradas });
+
+    });
+   
+});
+
+
+
+
 
 
 router.get('/posts', async (req, res, next) => {
@@ -51,99 +71,10 @@ router.post('/post/new-post', async (req, res) => {
 
 router.get('/posts/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
-    const commits = await Comentarios.find({ id: req.params.id }); 
-    
-    const reply = await Comentarios.find({ reply: { $nin: [0] } })
-        .where('id').equals(req.params.id);
-    //Primer query de union tipo Joina
-    /* const absolute = await Comentarios.aggregate([
-        {
-            $lookup:
-            {
-                from: 'Comentarios',
-                localField: 'id_comentario',
-                foreignField: 'id',
-                as: 'Resultados'
-            }
-        }
-    ]); */
-
-    //iNTENTO NACIONAL DE PROGRSAR PARTE 1
-    
-   
-    //console.log(reply); 
-   var matriz = [];
-   var arreglo = [];
-    //AHORA TENEMOS QUE ALMACENAS ESTA MADRE E.E
-   for (var i = 0; i < reply.length; i++) {
-  
-      arreglo = reply[i]["_id"]; 
-      matriz = reply[i]["reply"];
-       /* const consulta_arreglo = await Comentarios.find()
-           .where('id').equals(arreglo);
-       for (let j = 0; j < consulta_arreglo.length; j++) {
-           
-           matriz.push(consulta_arreglo[j]);
-           
-       }
-       var seleccion = matriz.name;
-
-             */
-       console.log(matriz);
-   }
+    console.log(post);
+    res.render('posts/read', { post});
     
     
-    
-
-
-  
-
-    //primero necesitamos recuperar bien las consultas y luego 
-    //las impimire en arrayas posterior a esto los imprimire de forma adecuada uwu
-    //console.log('This is a thest' + reply);
-   
-
-
-
-   /*  var arr = [];
-    var Comentario = [];
-    var Respuesta = [];
-    for (var i = 0; i < Comentario.length; i++) {
-        arr.push({
-            comment: commits[i],
-            answer: reply[i]
-        });
-    }
- */
-   // console.log("isi", arr)
-  
-   
- 
-    //console.log(post);
-    //console.log('esto es el commit');
-         // console.log(commits);
-    //console.log('esto es el rest');
-    //console.log(rest);
-    res.render('posts/read', { post, commits});
-  
-
 });
 
-
-router.post('/posts/search', async (req, res) => {
-    const {word}  = req.body;
-    
-    const entradas = await Post.find({
-        $or: [
-            { title: word },
-            { content: { $regex: word } },
-            { description: word }
-              
-            
-        ]
-    });
-
-    
-    res.render('posts/all-posts', { entradas });
-});
 module.exports = router;

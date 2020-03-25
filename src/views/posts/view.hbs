@@ -1,0 +1,14 @@
+    
+            {{#each entradas}}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ title }}</h5>
+                        <p class="card-text">{{ description }}</p>
+                         <a href="/posts/{{_id}} " class="btn btn-primary">Continuar Leyendo &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Created on {{date}}
+                    </div>
+                </div>
+            {{/each}}

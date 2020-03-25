@@ -13,9 +13,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    
+    <script src="/js/busqueda.js"></script>
     <link href="img/favicon.ico" rel="shortcut icon" />
-    
+    <script>
+        $(document).on('keyup', '#q', function () {
+            if ($(this).val() !== '' || $(this).val != undefined) {
+                var query = $(this).val();
+                $.ajax({
+                    url: 'http://localhost:3000/search?q=' + query,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.status == 'ok') {
+                            console.log(response.search_results);
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to search address');
+                    }
+                });
+            }
+        });
+    </script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700" rel="stylesheet">
     
@@ -26,6 +46,7 @@
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/magnific-popup.css" />
     <link rel="stylesheet" href="css/style.css" />
+
 </head>
 <body>
     

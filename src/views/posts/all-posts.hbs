@@ -17,7 +17,9 @@
          
 
             <!-- Blog Post -->
-            <h1>Hola {{user.name}} </h1>
+
+            
+           
             {{#each entradas}}
             <div class="card mb-4">
                 <img class="card-img-top" src=" {{image}} " alt="">
@@ -25,7 +27,7 @@
                     <h2 class="card-title">{{ title }}</h2>
                     <p class="card-text">{{ description }}</p>
                         
-                    <a href="/posts/{{_id}} " class="btn btn-primary">Read More &rarr;</a>
+                    <a href="/posts/{{_id}} " class="btn btn-primary">Continuar Leyendo &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Created on {{date}}
@@ -53,9 +55,9 @@
             <div class="card my-4">
                 <h5 class="card-header">Buscar</h5>
                 <div class="card-body">
-                    <form name="searchin" method="POST" action="/posts/search">
+                    <form name="searchin" method="POST" action="/posts/busqueda">
                         <div class="input-group">
-                            <input type="text" name="word" id="word" class="form-control" placeholder="Buscando...">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Buscando...">
                             <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit">Vamos!</button>
                             </span>
