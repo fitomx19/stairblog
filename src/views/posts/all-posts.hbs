@@ -1,11 +1,21 @@
 
 <div class="container">
 
-        <div class="jumbotron">
-            <h1 class="my-4" align="center">Bienvenidos a Stairwave!</h1>
-            <h5 align="center"> Blog dedicado a la programacion, Informatica y Tech.</h5>
-            <h6 align="center"><a href="/about">Creados por Michael Adolfo Huerta Ramirez</a></H6>
-            <br>
+            <div class="card my-4">
+                <h5 class="card-header">Buscal algun post en especial!</h5>
+                <div class="card-body">
+                    <form name="searchin" method="POST" action="/posts/busqueda">
+                        <div class="input-group">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Buscando...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Vamos!</button>
+                            </span>
+                        </div>
+                    </form>
+            
+                </div>
+            
+            
         </div>
     <div class="row">
        
@@ -39,10 +49,13 @@
             <!-- Pagination -->
             <ul class="pagination justify-content-center mb-4">
                 <li class="page-item">
-                    <a class="page-link" href="#">&larr; Older</a>
+                    <a class="page-link" href="/posts/1">1</a>
                 </li>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">Newer &rarr;</a>
+                <li class="page-item ">
+                    <a class="page-link" href="/posts/2">2</a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/posts/3">3</a>
                 </li>
             </ul>
 
@@ -52,21 +65,7 @@
         <div class="col-md-4">
 
             <!-- Search Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Buscar</h5>
-                <div class="card-body">
-                    <form name="searchin" method="POST" action="/posts/busqueda">
-                        <div class="input-group">
-                            <input type="text" name="title" id="title" class="form-control" placeholder="Buscando...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="submit">Vamos!</button>
-                            </span>
-                        </div>
-                    </form>
-                   
-                </div>
-               
-            </div>
+           
 
            
 

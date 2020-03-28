@@ -1,0 +1,87 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1 class="my-4" align="center">Bienvenidos a Stairwave!</h1>
+        <h5 align="center"> Blog dedicado a la programacion, Informatica y Tech.</h5>
+        <h6 align="center"><a href="/about">Creados por Michael Adolfo Huerta Ramirez</a></H6>
+        <br>
+    </div>
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <h1>Ultimo Post</h1>
+
+
+
+
+            <!-- Blog Post -->
+
+
+
+            {{#each entradas}}
+            <div class="card mb-4">
+              
+                <img class="card-img-top" src=" {{image}} " alt="">
+                <div class="card-body">
+                    <h2 class="card-title">{{ title }}</h2>
+                    <p class="card-text">{{ description }}</p>
+
+                    <a href="/posts/{{_id}} " class="btn btn-primary">Continuar Leyendo &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Created on {{date}}
+                </div>
+            </div>
+            {{/each}}
+
+
+            <!-- Pagination -->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link " href="/posts/1"> Ver más</a>
+                </li>
+                
+            </ul>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Buscar</h5>
+                <div class="card-body">
+                    <form name="searchin" method="POST" action="/posts/busqueda">
+                        <div class="input-group">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Buscando...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Vamos!</button>
+                            </span>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header"> Spotify Widget</h5>
+                <div class="card-body">
+                    <iframe src="https://open.spotify.com/embed/playlist/75cGxszGuYnwSfvGSzXk8L" width="300"
+                        height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->

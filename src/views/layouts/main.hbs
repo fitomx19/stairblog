@@ -7,6 +7,7 @@
     <title>STAIRWAVE</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/main.css">
+   
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -15,27 +16,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="/js/busqueda.js"></script>
     <link href="img/favicon.ico" rel="shortcut icon" />
-    <script>
-        $(document).on('keyup', '#q', function () {
-            if ($(this).val() !== '' || $(this).val != undefined) {
-                var query = $(this).val();
-                $.ajax({
-                    url: 'http://localhost:3000/search?q=' + query,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (response) {
-                        console.log(response);
-                        if (response.status == 'ok') {
-                            console.log(response.search_results);
-                        }
-                    },
-                    error: function () {
-                        alert('Failed to search address');
-                    }
-                });
-            }
-        });
-    </script>
+  
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700" rel="stylesheet">
     
@@ -46,7 +27,25 @@
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/magnific-popup.css" />
     <link rel="stylesheet" href="css/style.css" />
-
+    <script>
+        function getResults(query) {
+            if (query.length === 0) {
+                document.getElementById("results").innerHTML = "";
+                return;
+            }
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {  // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET", "/posts/buscar/search?" + query, true);
+            xmlhttp.onreadystatechange = function () {
+                    document.getElementById("results").innerHTML = xmlhttp.responseText;
+            
+            xmlhttp.send();
+        }
+    </script>
 </head>
 <body>
     

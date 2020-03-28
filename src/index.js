@@ -59,35 +59,6 @@ app.use(flash());
     next();
 }); 
 
-
-//Strategy fACEBOOk
-/* var FACEBOOK_APP_ID = '444404096447406',
-    FACEBOOK_APP_SECRET = '7425be9ae9b6dc8e4004a3920a7e7502';
-
-var fbOpts = {
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: '/auth/facebook/callback',
-    profileFields: ['emails']
-};
-
-var fbCallback = function(accesToken, refreshToken,profile, cb){
-    console.log(accesToken, refreshToken, profile);
-};
-
-passport.use(new FacebookStrategy(fbOpts,fbCallback));
-
-app.route('/login')
-    .get(passport.authenticate('facebook', { scope: ['email'] }));
-
-
-app.route('/auth/facebook/callback')
-    .get(passport.authenticate('facebook', function (err, user, info, req, res) {
-        res.send('/posts/add')
-
-    })) */
-
-
 //Rutas
 app.use(require('./routes/index'));
 app.use(require('./routes/post'));
