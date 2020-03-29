@@ -71,7 +71,7 @@ router.post('/post/new-post', async (req, res) => {
 
 });
 
-router.get('/posts/:id', async (req, res, next) => {
+router.get('/posts/read/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
     console.log(post);
     res.render('posts/read', { post});
@@ -81,14 +81,14 @@ router.get('/posts/:id', async (req, res, next) => {
 
 
 
-router.get("/posts/buscar", (req, res, next) => {
+router.post("/posts/busqueda", (req, res, next) => {
 
     const { title } = req.body;
     console.log(title);
     Post.fuzzySearch(title, function (err, entradas) {
         console.error(err);
         console.log(entradas);
-        res.write(entradas);
+        res.render('posts/view', { entradas });
       
 
     });
