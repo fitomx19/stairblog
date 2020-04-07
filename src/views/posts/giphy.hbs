@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giphpy</title>
+</head>
+
+<body>
+    <video id="gif" autoplay="true" loop="true"></video>
+    <input type="search" id="search">
+    <input type="submit" value="Enviar" id="btn">
+    
+    <script>
+        document.getElementById('btn').addEventListener('click', function () {
+            var keyword = document.getElementById('search').value;
+            Giphy.getUrlAsync(keyword, function (videoURL) {
+                document.getElementById('gif').src = videoURL;
+            })
+        });
+    </script>
+</body>
+
+</html>

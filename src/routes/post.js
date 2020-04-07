@@ -63,7 +63,7 @@ router.post('/post/new-post', async (req, res) => {
         const newPost = new Post({ title, description , image, content});
        // newNote.user = req.user.id; //el usuario
         await newPost.save();
-        console.log(newPost);
+       // console.log(newPost);
         req.flash('success_msg', 'Post agregado correctamente');
         res.redirect('/posts');
         //node es asyncrono , save guarda
@@ -73,7 +73,7 @@ router.post('/post/new-post', async (req, res) => {
 
 router.get('/posts/read/:id', async (req, res, next) => {
     const post = await Post.findById(req.params.id);
-    console.log(post);
+   // console.log(post);
     res.render('posts/read', { post});
     
     
@@ -84,10 +84,10 @@ router.get('/posts/read/:id', async (req, res, next) => {
 router.post("/posts/busqueda", (req, res, next) => {
 
     const { title } = req.body;
-    console.log(title);
+    //console.log(title);
     Post.fuzzySearch(title, function (err, entradas) {
-        console.error(err);
-        console.log(entradas);
+       // console.error(err);
+      //  console.log(entradas);
         res.render('posts/view', { entradas });
       
 
