@@ -17,10 +17,6 @@ router.get('/', async (req, res, next) => {
 router.get('/about', (req, res, next) => {
     res.render('about');
 });
-router.get('/policiy', (req, res, next) => {
-    res.sendFile(__dirname + "/public/" + "CoinsPolitics.pdf");
-});
-
 
 
 
