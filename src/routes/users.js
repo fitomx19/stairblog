@@ -40,7 +40,7 @@ router.get('/secret/MusicxMatch', (req, res, next) => {
 
 
 router.post('/users/signin', passport.authenticate('local', {
-    successRedirect: '/posts',
+    successRedirect: '/posts/1',
     failureRedirect: '/users/signin',
     failureFlash: true
 }));
