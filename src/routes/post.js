@@ -65,7 +65,7 @@ router.post('/post/new-post', async (req, res) => {
         await newPost.save();
        // console.log(newPost);
         req.flash('success_msg', 'Post agregado correctamente');
-        res.redirect('/posts');
+        res.redirect('/posts/1');
         //node es asyncrono , save guarda
     }
 
