@@ -207,9 +207,11 @@
 
     <!-- Portfolio section start -->
     <div class="container">
+        <div class="section-title">
         <h1 align="center">Portafolio</h1>
+        </div>
         <h3>Proyecto Coins donde desarrollamos una aplicacion de finanzas orientado a las personas con ingresos variables</h3>
-    </div>
+    
    
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -243,8 +245,9 @@
         </div>
         <br>
         <h4 align="center"><a href="https://drive.google.com/file/d/1o7wQDiFrfZhKMbLfcQjLAC_1IhYUtyRp/view?usp=sharing">Descargar Documentacion </a></h4>
+        <h4 align="center" ><a href="https://github.com/fitomx19/Coins_Project_Master/">Descargar Proyecto Android</a></h4>
     </div>
-    
+    </div>
     
        
   
@@ -337,7 +340,7 @@
                                 <div class="fact-content">
                                     <img src="img/icon/2-w.png" alt="">
                                     <h2>1</h2>
-                                    <p>Premios obtenidos</p>
+                                    <p>Premio obtenidos</p>
                                 </div>
                             </div>
                         </div>
@@ -353,25 +356,25 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-8 offset-xl-2">
-                    <div class="section-title">
-                        <h2>Contactame!</h2>
+                    <div class="section-title" align="center">
+                        <h2 >Contactame!</h2>
                     </div>
-                    <form class="contact-form">
+                    <form class="contact-form" method="POST" action="send">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" placeholder="Nombre">
+                                <input type="text"  class="form-control" name="name" placeholder="Introduce tu nombre" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" placeholder="E-mail">
+                                <input type="email"  class="form-control" name="email" placeholder="Indroduce tu Email" required>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" placeholder="Asunto">
-                                <textarea placeholder="Mensaje"></textarea>
+                                <input type="text"  class="form-control" name="asunto" placeholder="Escribe el asunto" required>
+                                <textarea rows="1"  class="form-control" name="message" maxlength="200" placeholder="Escribe tu mensaje " required></textarea>
                             </div>
                         </div>
-                        <div class="text-md-right">
-                            <button class="site-btn">Enviar!</button>
-                        </div>
+                    <button class="btn btn-secondary btn-block">
+                        Enviar
+                    </button>
                     </form>
                 </div>
             </div>
