@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='elem'></div>
+
+</body>
+</html>
+
+<script>
+    let random = Math.floor(Math.random() * 75); 
+    const url = 'https://pokeapi.co/api/v2/pokemon/'+random+'/';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let element = document.getElementById('elem')
+                element.innerHTML = `
+                <div class='container' align='center'>
+        <p><h1>${data.name}</h1></p> 
+        <p><h1>${data.order}</h1></p> 
+        <img heigh="200px" width="200px" src='${data.sprites.front_default}'/> 
+        </div>
+        `
+        
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+</script>

@@ -3,10 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
 var util = require("util");
-//var mXm = require("musixmatch");
-
-//mXm.Config.API_KEY = "afae3e5d00fa4fd2a8e0afe1ff3c2725";
-
 
 
 
@@ -19,24 +15,12 @@ router.get('/users/signin', (req, res, next) => {
 router.get('/secret/giphy', (req, res, next) => {
     res.render('./posts/giphy');
 });
-router.get('/secret/MusicxMatch', (req, res, next) => {
-    var successCallback = function (modelOrCollection) {
-        console.log("Success:");
-        console.log("  " + util.inspect(modelOrCollection));
-    };
 
-    var errorCallback = function (response) {
-        console.log("Error callback:");
-        console.log("  " + util.inspect(response));
-    };
-
-    mXm.API.getTrack(TRACK_ID, successCallback, errorCallback);
-    mXm.API.getLyrics(LYRICS_ID, successCallback, errorCallback);
-    mXm.API.getArtist(ARTIST_ID, successCallback, errorCallback);
-    mXm.API.getAlbum(ALBUM_ID, successCallback, errorCallback);
-    mXm.API.getSubtitle(TRACK_ID, successCallback, errorCallback);
-    mXm.API.searchTrack({ q: QUERY }, successCallback);
+router.get('/secret/poke', (req, res, next) => {
+    
+    res.render('./posts/poke');
 });
+
 
 
 router.post('/users/signin', passport.authenticate('local', {

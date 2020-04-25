@@ -64,10 +64,9 @@ app.use(require('./routes/index'));
 app.use(require('./routes/post'));
 app.use(require('./routes/users'));
 app.use(require('./routes/comments'));
+app.use(require('./routes/lyrics'));
 
-app.post('/send', (req,res)=>{
-    console.log(req.body);
-})
+
 //Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
