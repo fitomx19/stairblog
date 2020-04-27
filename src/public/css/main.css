@@ -46,3 +46,8 @@ header .overlay {
     display: none;
   }
 }
+
+.supreme{
+  font-family: 'Monoton', cursive;
+  background-image: url("img/fondo.jpg");
+}
